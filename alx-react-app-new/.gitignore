@@ -1,0 +1,38 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# VS Code settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional npm cache
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Dependency directories
+jspm_packages/
+
+# IDE folders
+.idea/
+
+# Lock files (optional)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
