@@ -1,26 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import useRecipeStore from "../store/recipeStore";
 import SearchBar from "./SearchBar";
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.recipes);
-  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
   const searchTerm = useRecipeStore((state) => state.searchTerm);
-  const filterRecipes = useRecipeStore((state) => state.filterRecipes);
+  const recipes = useRecipeStore((state) =>
+    searchTerm ? state.filteredRecipes : state.recipes
+  );
 
-  useEffect(() => {
-    filterRecipes();
-  }, [searchTerm, recipes, filterRecipes]);
-
-  const displayRecipes = searchTerm ? filteredRecipes : recipes;
+  if (recipes.length === 0) return <p>No recipes found.</p>;
 
   return (
     <div>
-      <h2>Recipe List</h2>
       <SearchBar />
       <ul>
-        {displayRecipes.map((recipe) => (
+        {recipes.map((recipe) => (
           <li key={recipe.id}>
             <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
           </li>
