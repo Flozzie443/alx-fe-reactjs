@@ -3,26 +3,20 @@ import AddRecipeForm from "./components/AddRecipeForm";
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
 
-const App = () => {
+function App() {
   return (
     <Router>
-      <div>
+      <div style={{ padding: "20px" }}>
         <h1>Recipe Sharing Application</h1>
+        <AddRecipeForm />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <AddRecipeForm />
-                <RecipeList />
-              </>
-            }
-          />
+          <Route path="/" element={<RecipeList />} />
           <Route path="/recipe/:id" element={<RecipeDetails />} />
         </Routes>
       </div>
     </Router>
   );
-};
+}
 
 export default App;
+
