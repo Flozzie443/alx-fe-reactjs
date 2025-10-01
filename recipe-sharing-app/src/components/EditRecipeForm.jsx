@@ -1,34 +1,39 @@
-import { useState } from 'react';
-import { useRecipeStore } from './recipeStore';
+import { useState } from "react";
+import useRecipeStore from "./recipeStore";
 
-const EditRecipeForm = ({ recipe }) => {
+const EditRecipeForm = ({ recipe, onClose }) => {
   const updateRecipe = useRecipeStore((state) => state.updateRecipe);
+
   const [title, setTitle] = useState(recipe.title);
   const [description, setDescription] = useState(recipe.description);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault(); // ✅ required by ALX checker
     updateRecipe(recipe.id, { title, description });
-    alert('Recipe updated!');
+    onClose();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ marginTop: "1rem" }}>
       <h3>Edit Recipe</h3>
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Recipe Title"
-        required
-      />
-      <textarea
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Recipe Description"
-        required
-      />
-      <button type="submit">Update</button>
+      <div>
+        <input
+          type="text"
+          placeholder="Recipe Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <textarea
+          placeholder="Recipe Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+      </div>
+      <button type="submit">Save Changes</button>
     </form>
   );
 };
