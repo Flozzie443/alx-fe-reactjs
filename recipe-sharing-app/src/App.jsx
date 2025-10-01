@@ -8,14 +8,12 @@ import EditRecipeForm from "./components/EditRecipeForm.jsx";
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<RecipeList />} />
-          <Route path="/add" element={<AddRecipeForm />} />
-          <Route path="/recipe/:id" element={<RecipeDetail />} />
-          <Route path="/edit/:id" element={<EditRecipeForm />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<RecipeList />} />
+        <Route path="/add" element={<AddRecipeForm />} />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
+        <Route path="/edit/:id" element={<EditRecipeForm />} />
+      </Routes>
     </Router>
   );
 }

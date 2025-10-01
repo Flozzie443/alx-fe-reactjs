@@ -24,8 +24,7 @@ const useRecipeStore = create((set, get) => ({
     })),
 
   // Set search term
-  setSearchTerm: (term) =>
-    set({ searchTerm: term }, false, "setSearchTerm"),
+  setSearchTerm: (term) => set({ searchTerm: term }),
 
   // Filter recipes based on search term
   filterRecipes: () => {
